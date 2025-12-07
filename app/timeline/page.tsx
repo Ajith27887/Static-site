@@ -31,14 +31,14 @@ async function getTimelineData(): Promise<TimelineEvent[]> {
 // The component is now an async Server Component
 const Page = async () => {
   const data = await getTimelineData();  
-  const events = data.slice(0, 4);
+  const events = data.slice(0, 6);
   console.log(data, "data");
   
 
   return (
 	<div className='grid grid-cols-4 gap-5 bg-black p-5 h-dvh'>
       {events.map((event) => (
-          <div key={event.id} className='relative group w-full h-6/12'>
+          <div key={event.id} className='relative group w-full h-11/12'>
              <Image 
                 src={event.src} 
                 className='w-full h-full object-cover rounded-3xl' 
@@ -47,7 +47,6 @@ const Page = async () => {
                 height={500}
             />
             <div className='absolute inset-0 bg-black/50 flex p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-				<h1 className='text-white' >{event.heading}</h1>	
             	<p className='text-white mt-5 float-left font-bold '>{event.content}</p>
             </div>
           </div>
