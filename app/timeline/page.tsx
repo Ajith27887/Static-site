@@ -1,6 +1,6 @@
 import Image from 'next/image'
 // REMOVE: No need for hardcoded static image imports anymore!
-// import TTY2 from "@/img/TTY2.jpg"
+import TTY2 from "@/public/img/TTY2.jpg"
 // import TTY4 from "@/img/20190414_1350_SingaporeOpen2019_BPMR_2141.jpg"
 // import TTY5 from "@/img/20190922_1448_ChinaOpen2019_BPYL8841.jpg"
 // import TTY6 from "@/img/20191026_1712_FrenchOpen2019_BPYN2406.jpg"

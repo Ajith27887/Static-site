@@ -11,7 +11,7 @@ export interface TimelineEvent {
 
 const timelineData: TimelineEvent[] = [
   {
-    id: "TTY2",
+    id: "TTY1",
     src: "/img/TTY2.jpg", 
     date: "2022-07-24",
     event: "Taipei Open 2022",
@@ -20,7 +20,7 @@ const timelineData: TimelineEvent[] = [
 	content : "Influenced by her father, a firefighter and director of the local badminton committee.Started playing in elementary school.Became the youngest-ever player to compete in Taiwan's first division tournaments.First international event: 2007 Vietnam International Reached her first Superseries final at the 2010 Singapore Open on her 16th birthday (lost to Saina Nehwal).",
   },
   {
-    id: "TTY5",
+    id: "TTY2",
     src: "/img/20190922_1448_ChinaOpen2019_BPYL8841.jpg", 
     date: "2019-09-22",
     event: "China Open 2019",
@@ -30,7 +30,7 @@ const timelineData: TimelineEvent[] = [
 
   },
   {
-    id: "TTY6",
+    id: "TTY3",
 	src: "/img/433360434_316747551417457_6529359403919003594_n.jpg", 
     date: "2019-10-26",
     event: "French Open 2019",
