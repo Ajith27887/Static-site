@@ -12,53 +12,43 @@ interface TimelineEvent {
   date: string;
   event: string;
   alt: string;
+  content : string
+  heading : string
 }
 
-// Function to fetch data from the new API endpoint
 async function getTimelineData(): Promise<TimelineEvent[]> {
-  // NOTE: Next.js treats `fetch` inside Server Components intelligently.
-  // It automatically caches the result and dedupes requests for performance.
   const res = await fetch('http://localhost:3000/api/timeline', {
-    // Setting `cache: 'force-cache'` explicitly tells Next.js to cache 
-    // the data aggressively, enabling Static Site Generation (SSG) on the server.
-    cache: 'force-cache'
+    cache: 'no-store'
   });
   
   if (!res.ok) {
-    // Trigger Next.js error boundary if the API call fails
     throw new Error('Failed to fetch timeline data');
   }
 
-  // The Route Handler returns JSON, so we parse it here.
   return res.json();
 }
 
 // The component is now an async Server Component
 const Page = async () => {
-  // Fetch the data on the server before rendering
-  const data = await getTimelineData();
-  
-  // We'll use the first 4 events for the 4-column grid
+  const data = await getTimelineData();  
   const events = data.slice(0, 4);
   console.log(data, "data");
   
 
   return (
-	<div className='grid grid-cols-4 gap-0 bg-black p-5 h-dvh'>
-      {/* Map through the fetched data instead of hardcoding divs */}
+	<div className='grid grid-cols-4 gap-5 bg-black p-5 h-dvh'>
       {events.map((event) => (
-          <div key={event.id} className='relative group w-full h-11/12'>
-             {/* The src is now a string path returned from the API */}
+          <div key={event.id} className='relative group w-full h-6/12'>
              <Image 
                 src={event.src} 
-                className='w-full h-full object-cover' 
+                className='w-full h-full object-cover rounded-3xl' 
                 alt={event.alt} 
-                // Add explicit width/height since it's now a string src
                 width={500} 
-                height={700}
+                height={500}
             />
-            <div className='absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-              <p className='text-white font-bold text-lg'>View</p>
+            <div className='absolute inset-0 bg-black/50 flex p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+				<h1 className='text-white' >{event.heading}</h1>	
+            	<p className='text-white mt-5 float-left font-bold '>{event.content}</p>
             </div>
           </div>
       ))}
