@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import Link from "next/link"
-import TTY3 from "@/img/TTY3.jpg"
+import TTY3 from "@/public/img/TTY3.jpg"
 
 const Main = () => {
   return (

@@ -1,0 +1,54 @@
+import { NextResponse } from "next/server";
+
+// Define the shape of our data for type safety
+export interface TimelineEvent {
+  id: string;
+  src: string;
+  date: string;
+  event: string;
+  alt: string;
+}
+
+// 🖼️ Mock Data for the Timeline with CORRECT paths
+const timelineData: TimelineEvent[] = [
+  {
+    id: "TTY2",
+    // 💡 FIX: Changed from "@/img/TTY2.jpg" to "/img/TTY2.jpg"
+    src: "/img/TTY2.jpg", 
+    date: "2022-07-24",
+    event: "Taipei Open 2022",
+    alt: "Tai Tzu Ying smiling at Taipei Open",
+  },
+  {
+    id: "TTY5",
+    // 💡 FIX: Changed to start with "/"
+    src: "/img/20190922_1448_ChinaOpen2019_BPYL8841.jpg", 
+    date: "2019-09-22",
+    event: "China Open 2019",
+    alt: "Tai Tzu Ying celebrating at China Open",
+  },
+  {
+    id: "TTY6",
+    // 💡 FIX: Changed to start with "/"
+    src: "/img/20191026_1712_FrenchOpen2019_BPYN2406.jpg", 
+    date: "2019-10-26",
+    event: "French Open 2019",
+    alt: "Tai Tzu Ying hitting a shot at French Open",
+  },
+  {
+    id: "TTY4",
+    // 💡 FIX: Changed to start with "/"
+    src: "/img/20190414_1350_SingaporeOpen2019_BPMR_2141.jpg", 
+    date: "2019-04-14",
+    event: "Singapore Open 2019",
+    alt: "Tai Tzu Ying in action at Singapore Open",
+  },
+];
+
+/**
+ * Route Handler for GET /api/timeline
+ * This function handles GET requests and returns the timeline data.
+ */
+export async function GET() {
+  return NextResponse.json(timelineData);
+}
