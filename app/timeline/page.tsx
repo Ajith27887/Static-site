@@ -17,10 +17,20 @@ interface TimelineEvent {
 }
 
 async function getTimelineData(): Promise<TimelineEvent[]> {
-  const res = await fetch('/api/timeline', {
+
+	  const host = process.env.VERCEL_URL // Vercel provides VERCEL_URL (e.g., my-app.vercel.app)
+    ? `https://${process.env.VERCEL_URL}` 
+    : 'http://localhost:3000'; // Fallback for local development
+  
+  const API_URL = `${host}/api/timeline`;
+
+
+  const res = await fetch(API_URL, {
     cache: 'no-store'
   });
-  
+
+
+
   if (!res.ok) {
     throw new Error('Failed to fetch timeline data');
   }
