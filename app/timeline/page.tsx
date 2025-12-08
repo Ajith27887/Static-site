@@ -17,7 +17,7 @@ interface TimelineEvent {
 }
 
 async function getTimelineData(): Promise<TimelineEvent[]> {
-  const res = await fetch('http://localhost:3000/api/timeline', {
+  const res = await fetch('/api/timeline', {
     cache: 'no-store'
   });
   
