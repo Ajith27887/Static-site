@@ -36,7 +36,7 @@ const Page = async () => {
   
 
   return (
-	<div className='grid grid-cols-4 gap-5 bg-black p-5 h-dvh'>
+	<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 bg-black p-5 min-h-screen'>
       {events.map((event) => (
           <div key={event.id} className='relative group w-full h-11/12'>
              <Image 
