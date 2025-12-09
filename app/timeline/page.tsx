@@ -18,8 +18,10 @@ interface TimelineEvent {
 
 async function getTimelineData(): Promise<TimelineEvent[]> {
 
-	  const host = process.env.VERCEL_URL // Vercel provides VERCEL_URL (e.g., my-app.vercel.app)
-    ? `https://${process.env.VERCEL_URL}` 
+	const VERCELURL = "static-site-97tt.vercel.app"
+
+	  const host = VERCELURL // Vercel provides VERCEL_URL (e.g., my-app.vercel.app)
+    ? `https://${VERCELURL}` 
     : 'http://localhost:3000'; // Fallback for local development
   
   const API_URL = `${host}/api/timeline`;
