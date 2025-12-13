@@ -1,11 +1,5 @@
 import Image from 'next/image'
-// REMOVE: No need for hardcoded static image imports anymore!
-import TTY2 from "@/public/img/TTY2.jpg"
-// import TTY4 from "@/img/20190414_1350_SingaporeOpen2019_BPMR_2141.jpg"
-// import TTY5 from "@/img/20190922_1448_ChinaOpen2019_BPYL8841.jpg"
-// import TTY6 from "@/img/20191026_1712_FrenchOpen2019_BPYN2406.jpg"
-
-// Define the shape of a single event (re-used from the API file for consistency)
+import YearContainer from '../components/YearContainer';
 interface TimelineEvent {
   id: string;
   src: string;
@@ -20,11 +14,9 @@ async function getTimelineData(): Promise<TimelineEvent[]> {
 
 	const VERCELURL = "static-site-97tt.vercel.app"
 
-	  const host = VERCELURL // Vercel provides VERCEL_URL (e.g., my-app.vercel.app)
-    ? `https://${VERCELURL}` 
-    : 'http://localhost:3000'; // Fallback for local development
+	const host = VERCELURL ? `https://${VERCELURL}` : 'http://localhost:3000';
   
-  const API_URL = `${host}/api/timeline`;
+  	const API_URL = `${host}/api/timeline`;
 
 
   const res = await fetch(API_URL, {
@@ -40,12 +32,9 @@ async function getTimelineData(): Promise<TimelineEvent[]> {
   return res.json();
 }
 
-// The component is now an async Server Component
 const Page = async () => {
   const data = await getTimelineData();  
-  const events = data.slice(0, 6);
-  console.log(data, "data");
-  
+  const events = data.slice(0, 6);  
 
   return (
 	<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 bg-black p-5 min-h-screen'>
@@ -63,6 +52,7 @@ const Page = async () => {
             </div>
           </div>
       ))}
+	  <YearContainer/>
 	</div>
   )
 }
